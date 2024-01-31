@@ -61,6 +61,8 @@ export const DueDateHeader = ({ dueData }: DueDateProps) => {
       </Space>
     );
   }
+
+  return <Typography.Link>Add task description</Typography.Link>;
 };
 
 export const UsersHeader = ({ users = [] }: UserProps) => {

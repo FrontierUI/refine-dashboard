@@ -1,10 +1,9 @@
-import React from 'react';
-import { Card } from 'antd';
-import { useList } from '@refinedev/core';
-import { Area, AreaConfig } from '@ant-design/plots';
-
 import { DollarOutlined } from '@ant-design/icons';
+import { Card } from 'antd';
+import React from 'react';
 import { Text } from '../text';
+import { Area, AreaConfig } from '@ant-design/plots';
+import { useList } from '@refinedev/core';
 import { DASHBOARD_DEALS_CHART_QUERY } from '@/graphql/queries';
 import { mapDealsData } from '@/utilities/helpers';
 import { GetFieldsFromList } from '@refinedev/nestjs-query';
@@ -34,21 +33,19 @@ const DealsChart = () => {
     yAxis: {
       tickCount: 4,
       label: {
-        label: {
-          formatter: (v: string) => {
-            return `$${Number(v) / 1000}k`;
-          },
+        formatter: (v: string) => {
+          return `$${Number(v) / 1000}k`;
         },
       },
     },
-    // tooltip: {
-    //   formatter: (data) => {
-    //     return {
-    //       name: data.state,
-    //       value: `$${Number(data.value) / 1000}k`,
-    //     };
-    //   },
-    // },
+    tooltip: {
+      formatter: (data) => {
+        return {
+          name: data.state,
+          value: `$${Number(data.value) / 1000}k`,
+        };
+      },
+    },
   };
 
   return (
